@@ -19,8 +19,7 @@ def create_user():
         if 'username' not in data or 'email' not in data or 'usertype' not in data:
             return handle_error('Missing data fields (username, email, usertype required)', 400)
 
-        new_user = User(
-            username=data['username'], email=data['email'], usertype=data['usertype'])
+        new_user = User(username=data['username'], email=data['email'], usertype=data['usertype'])
         db.session.add(new_user)
         db.session.commit()
         logging.info(jsonify(new_user.serialize()))
