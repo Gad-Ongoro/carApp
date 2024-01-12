@@ -7,6 +7,7 @@ class Car(db.Model):
     model = db.Column(db.String(100))
     year = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    sales = db.relationship("Sales", backref = "car", lazy = True)
 
     def serialize(self):
         return {
