@@ -7,6 +7,7 @@ class User(db.Model):
     email = db.Column(db.String(100), unique=True)
     usertype = db.Column(db.String(20))
     cars = db.relationship('Car', backref='user', lazy=True)
+    sales = db.relationship('Sales', backref = 'user')
 
     def serialize(self):
         return {
