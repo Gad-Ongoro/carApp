@@ -39,9 +39,39 @@ def get_cars():
 """ TD """
     
 # (/cars/car_id) R
+def get_car(car_id):
+    try:
+        car = Car.query.filter_by(id = car_id).first()
+        return jsonify(car.serialize()), 200
+    except SQLAlchemyError as e:
+        return handle_error(e, 500)
 
     
 # (/cars/car_id) U
+def update_car(car_id):
+    try:
+        car = Car.query.filter_by(id = car_id).first()
+        data = request.get_json()
+        for attr in data:
+            setattr(car, attr, data[attr])
+        
+        db.session.commit()
+        
+        return jsonify(car.serialize()), 200
+    
+    except SQLAlchemyError as e:
+        return handle_error(e, 500)
 
 
 # (/cars/car_id) D
+def delete_car(car_id):
+    try:
+        car = Car.query.filter_by(id = car_id).first()
+        
+        db.session.delete(car)
+        db.session.commit()
+        
+        return jsonify({"Message": "Deleted Successesfully"})
+    
+    except SQLAlchemyError as e:
+        return handle_error(e, 500)
