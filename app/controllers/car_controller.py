@@ -10,6 +10,7 @@ def handle_error(e, status_code):
     logging.error(str(e))
     return jsonify({'error' : str(e)}), status_code
 
+# (/cars) C
 def create_car():
     try:
         data = request.get_json()
@@ -25,7 +26,8 @@ def create_car():
     
     except SQLAlchemyError as e:
         return handle_error(e, 500)
-
+    
+# (/cars) R
 def get_cars():
     try:
         cars = Car.query.all()
@@ -33,3 +35,13 @@ def get_cars():
     
     except SQLAlchemyError as e:
         return handle_error(e, 500)
+
+""" TD """
+    
+# (/cars/car_id) R
+
+    
+# (/cars/car_id) U
+
+
+# (/cars/car_id) D
