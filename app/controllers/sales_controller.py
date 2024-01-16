@@ -39,7 +39,7 @@ def get_sales():
     
     
 # (/sales/sale_id)
-def get_sales(sale_id):
+def get_sale(sale_id):
     try:
         sale = Sales.query.filter_by(id = sale_id).first()
         return jsonify(sale.serialize())

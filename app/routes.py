@@ -1,6 +1,8 @@
 from flask import Blueprint
 from app.controllers.user_controller import create_user, get_users, get_user, update_user
-from app.controllers.car_controller import create_car, get_cars, get_car, update_car, delete_car, create_sale, get_sales, get_sale, update_sale, delete_sale
+from app.controllers.car_controller import create_car, get_cars, get_car, update_car, delete_car
+
+from app.controllers.sales_controller import create_sale, get_sales, get_sale, update_sale, delete_sale
 
 bp = Blueprint('bp', __name__)
 
